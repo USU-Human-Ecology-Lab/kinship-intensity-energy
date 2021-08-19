@@ -25,7 +25,6 @@ def truncate(x):
     if x > 1:
         return 1
     return x
-
 def compute_scores(X, n_components):
     pca = PCA(svd_solver='full')
     fa = FactorAnalysis()
@@ -37,22 +36,6 @@ def compute_scores(X, n_components):
         pca_scores.append(np.mean(cross_val_score(pca, X)))
         fa_scores.append(np.mean(cross_val_score(fa, X)))
     return pca_scores, fa_scores
-
-def freqToScore(freq):
-    return {
-        # Frequencies assigned scores according to yearly occurences
-        'daily'                 : 365,
-        'weekly'                : 52,
-        'monthly'               : 12,
-        'monthly/seasonal'      : 8,
-        'seasonal'              : 4,
-        'seasonally'            : 4,
-        'yearly'                : 1,
-        'once yearly'           : 1,
-        'once in a generation'  : 1/25,
-        'once per generation'   : 1/25,
-        'once in a lifetime'    : 1/60
-    }[freq]/365
 
 # Check to see if a series meets the specified imputation threshold
 def imputationThreshold(series, maxImputed):
@@ -77,9 +60,9 @@ def testPCsignificance(X, n):
     pca.fit(X)
     n_components_pca_mle = pca.n_components_
 
-    print("Best n_components by PCA CV = %d" % n_components_pca)
-    print("Best n_components by FactorAnalysis CV = %d" % n_components_fa)
-    print("Best n_components by PCA MLE = %d" % n_components_pca_mle)
+    print("Significant n_components by PCA CV = %d" % n_components_pca)
+    print("Significant n_components by FactorAnalysis CV = %d" % n_components_fa)
+    print("Significant n_components by PCA MLE = %d" % n_components_pca_mle)
 
 def runPCA(X, n):
     X = X.copy()
@@ -135,46 +118,5 @@ def main():
         full_data_i.to_csv('seshat-kinship_allow-{}.csv'.format(i))
         print('')
 
-#    pcs = pd.DataFrame(components, columns=['PC1','PC2','PC3','PC4','PC5','PC6','PC7'])
-
-#    pcs['Aggregate_metric'] = pcs['PC1'] + pcs['PC2'] + pcs['PC3'] + pcs['PC4']
-#    print(pcs['Aggregate_metric'])
-#    sns.histplot(pcs['Aggregate_metric'],bins=20)
-#    plt.show()
-
-#    pcs.index = data.index
-#    pcs.to_csv('PCA_kinship_metric.csv')
-
-#    fig = plt.figure()
-#    ax = Axes3D(fig)
-#    pcs = pd.DataFrame(components)
-#    print(pcs)
-#    ax.scatter(pcs[0],pcs[1],pcs[2])
-#    ax.set_xlabel('PC1')
-#    ax.set_ylabel('PC3')
-#    ax.set_zlabel('PC3')
-#    plt.show()
-
-
 if __name__ == '__main__':
     main()
-#pca = PCA()
-#pca.fit(data)
-#components = pca.transform(data)
-#
-#print('Loadings [PC1 PC2 PC3]')
-#print(pca.explained_variance_)
-#print('Explained variance [PC1 PC2 PC3]')
-#print(pca.explained_variance_ratio_)
-#
-#loadings = pca.components_.T * np.sqrt(pca.explained_variance_)
-#loading_matrix = pd.DataFrame(loadings, columns=['PC1','PC2','PC3'], index=COLS) #print(loading_matrix)
-#
-#pcs = (pd.DataFrame(components,columns=['PC1','PC2','PC3']))
-#
-#
-#x = pcs['PC1']
-#y = pcs['PC2']
-#sns.kdeplot(x,y,cmap='plasma_r',shade=True,shade_lowest=False,bw=0.15, alpha = 1)
-#plt.show()
-#
