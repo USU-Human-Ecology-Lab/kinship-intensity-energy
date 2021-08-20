@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns; sns.set_style('white')
 import pandas as pd
 
+sns.set_style({'font.family' : 'serif'})
+
 
 data_0_loadings = [0.22882388 ,0.11129247 ,0.01740337]
 data_0_explaind = [0.6400315  ,0.31129043 ,0.04867806]
