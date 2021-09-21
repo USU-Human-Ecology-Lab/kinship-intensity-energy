@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use or reference this software, please cite it as below."
+authors:
+- family-names: "Freeman"
+  given-names: "Jacob"
+  orcid: "https://orcid.org/0000-0001-7402-8450"
+- family-names: "Baggio"
+  given-names: "Jacopo A."
+  orcid: "https://orcid.org/0000-0002-9616-4143"
+- family-names: "Miranda"
+  given-names: "Lux"
+  orcid: "https://orcid.org/0000-0002-3753-7405"
+- family-names: "Anderies"
+  given-names: "John M."
+  orcid: "https://orcid.org/0000-0002-0138-8655"
+title: "Code for: Kinship moderates human energy use"
+version: 1.0.0
+date-released: 2021-09-21
+url: "https://github.com/USU-Human-Ecology-Lab/kinship-intensity-energy"
