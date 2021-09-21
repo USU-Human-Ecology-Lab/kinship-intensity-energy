@@ -28,33 +28,33 @@ explaind = pd.DataFrame(
         )
 
 sns.set_palette('colorblind')
-#ax = sns.lineplot(data=explaind.transpose(),
-#        lw=2.5,
-#        ms=14,
-#        markers=['^','o','*','s']
-#        )
-#ax.legend(labels=['0 allowed','1 allowed','2 allowed', '3 allowed'])
-#ax.set(xticks=[1,2,3])
-#ax.yaxis.grid(True)
-#plt.ylabel('Percentage of explained variance')
-#plt.xlabel('Principal component')
-#plt.show()
-
-
-loadings.index = ['0 allowed','1 allowed','2 allowed','3 allowed']
-
-data = []
-for i in loadings.index:
-    for pc in loadings.columns:
-        data.append({ 
-            'x' : pc,
-            'y' : loadings.at[i, pc],
-            'Imputation treatment' : i
-        })
-        print(loadings.at[i, pc])
-
-data = pd.DataFrame(data)
-ax = sns.catplot(data=data, x='x', y='y', hue='Imputation treatment', kind='bar')
+ax = sns.lineplot(data=explaind.transpose(),
+        lw=2.5,
+        ms=14,
+        markers=['^','o','*','s']
+        )
+ax.legend(labels=['0 allowed','1 allowed','2 allowed', '3 allowed'])
+ax.set(xticks=[1,2,3])
+ax.yaxis.grid(True)
+plt.ylabel('Percentage of explained variance')
 plt.xlabel('Principal component')
-plt.ylabel('Loading')
 plt.show()
+
+
+#loadings.index = ['0 allowed','1 allowed','2 allowed','3 allowed']
+#
+#data = []
+#for i in loadings.index:
+#    for pc in loadings.columns:
+#        data.append({ 
+#            'x' : pc,
+#            'y' : loadings.at[i, pc],
+#            'Imputation treatment' : i
+#        })
+#        print(loadings.at[i, pc])
+#
+#data = pd.DataFrame(data)
+#ax = sns.catplot(data=data, x='x', y='y', hue='Imputation treatment', kind='bar')
+#plt.xlabel('Principal component')
+#plt.ylabel('Loading')
+#plt.show()
